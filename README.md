@@ -16,12 +16,11 @@ Before you can use the button component, you need to install the itab script. To
 
 Or programmatically include the script in your application.
 
-> Example in Vue.js
-> ```javascript
-> let lendicaScript = document.createElement('script');
-> lendicaScript.setAttribute('src', 'https://static-idev.golendica.com/itab.js');
-> document.head.appendChild(lendicaScript);
-> ```
+```javascript
+let lendicaScript = document.createElement('script');
+lendicaScript.setAttribute('src', 'https://static-idev.golendica.com/itab.js');
+document.head.appendChild(lendicaScript);
+```
 
 #### 2. Install the invoice button component
 ```sh
