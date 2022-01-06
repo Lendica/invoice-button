@@ -1,9 +1,8 @@
 # Lendica Invoice Button API
-Invoice status button web component and example integration in different Frameworks
+Invoice status button web component and example integration in javascript Frameworks
 
 [![npm version](https://img.shields.io/badge/npm-v1.0.1-8c8ca1)](https://www.npmjs.com/package/@lendica/invoicebutton)
-
- ###### :exclamation: Lendica invoice button is intended to be used alongside Lendica iTab only.
+ ###### :exclamation: Lendica invoice button is only intended to be used alongside Lendica iTab
 
 
 ## Installation
@@ -34,23 +33,15 @@ Once you have set up a module bundler to resolve ECMAScript `import`, you can st
 ```javascript
 import '@lendica/invoicebutton';
 ```
-Then you can either use the component as native HTML tags:
+Then you can use the component as native HTML tags:
 ```html
 <!-- Pass your platform's invoice identifier to the button component -->
 <invoice-button invoiceId="123456"></invoice-button>
 ```
-create an instance in JavaScript:
-```javascript
-let InvoiceButton = document.createElement('invoice-button', { invoiceId: '123456' });
-document.body.appendChild(InvoiceButton);
-```
-or use the new operator:
-```javascript
-let InvoiceButton = new InvoiceButton({ invoiceId: '123456' });
-```
 
 ## Full Integration Examples in Frameworks
 #### Vue.js (Vue 3)
+Code in App.vue:
 ```javascript
 /* App.vue */
 <template>
@@ -79,6 +70,7 @@ import '@lendica/invoicebutton';
 export default {
     data(){
         return{
+            // Pass the invoice identifiers
             rows: [
                 {
                     invoiceId: 10001,
@@ -104,7 +96,7 @@ export default {
         this.invoiceButtonRefs = []
     },
     updated() {
-        console.log(this.invoiceButtonRefs)
+        // do something with this.invoiceButtonRefs
     },
     async created(){
         // Programmatically add the iTab script
@@ -136,6 +128,13 @@ export default {
 }
 </script>
 ```
+Run example: Change the credentials in App.vue and
+```sh
+cd Vue
+npm install
+npm run serve
+```
+Refer to [Vue and Web Components](https://v3.vuejs.org/guide/web-components.html#using-custom-elements-in-vue) for more information on using custom elements in Vue.js.
 
 #### React
 > Coming soon
