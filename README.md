@@ -18,7 +18,7 @@ Or programmatically include the script in your application.
 
 ```javascript
 let lendicaScript = document.createElement('script');
-lendicaScript.setAttribute('src', 'https://static-idev.golendica.com/itab.js');
+lendicaScript.setAttribute('src', 'https://static.golendica.com/itab.js');
 document.head.appendChild(lendicaScript);
 ```
 
@@ -100,7 +100,7 @@ export default {
     async created(){
         // Programmatically add the iTab script
         let lendicaScript = document.createElement('script');
-        lendicaScript.setAttribute('src', 'https://static-idev.golendica.com/itab.js');
+        lendicaScript.setAttribute('src', 'https://static.golendica.com/itab.js');
         document.head.appendChild(lendicaScript);
 
         // Using iTab and invoice button

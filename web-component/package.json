@@ -1,6 +1,6 @@
 {
     "name": "@lendica/invoicebutton",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Lendica invoice status button to be used alongside iTab.",
     "main": "build/index.js",
     "module": "build/index.js",
