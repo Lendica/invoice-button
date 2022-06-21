@@ -96,7 +96,7 @@ var InvoiceButton = /*#__PURE__*/function (_HTMLElement) {
                     }
                   } else {
                     this.shadowRoot.querySelector("button").disabled = true;
-                    this.shadowRoot.querySelector("button").innerText = "Loading...";
+                    this.shadowRoot.querySelector("button").innerText = "Unavailable";
                   }
                 }
 

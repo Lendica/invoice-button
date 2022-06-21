@@ -79,7 +79,7 @@ class InvoiceButton extends HTMLElement {
             } else {
                 this.shadowRoot.querySelector("button").disabled = true;
                 this.shadowRoot.querySelector("button").innerText =
-                    "Loading...";
+                    "Unavailable";
             }
         }
 
