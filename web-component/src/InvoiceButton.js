@@ -6,37 +6,37 @@
  */
 const template = document.createElement("template");
 template.innerHTML = `
-   <style>
-     div {
-       margin-top: 20px;
-     }
-     button {
-         border-radius: 4px;
-         border: none;
-         outline: 0;
-         padding: 4px 8px;
-     }
-     button:hover {
-        cursor: pointer;
-        opacity: 0.8;
-     }
-     .status-default {
-         background: #58A10E;
-         color: #FCFCFD;
-     }
-     .status-processing {
-         background: #F98F34;
-         color: #FCFCFD;
-     }
-     .status-paid {
-         background: #9292A4;
-         color: #FCFCFD;
-     }
-   </style>
-   <button type="button"
-   >
-   </button>
- `;
+    <style>
+      div {
+        margin-top: 20px;
+      }
+      button {
+          border-radius: 4px;
+          border: none;
+          outline: 0;
+          padding: 4px 8px;
+      }
+      button:hover {
+         cursor: pointer;
+         opacity: 0.8;
+      }
+      .status-default {
+          background: #58A10E;
+          color: #FCFCFD;
+      }
+      .status-processing {
+          background: #F98F34;
+          color: #FCFCFD;
+      }
+      .status-paid {
+          background: #9292A4;
+          color: #FCFCFD;
+      }
+    </style>
+    <button type="button"
+    >
+    </button>
+  `;
 
 class InvoiceButton extends HTMLElement {
     constructor() {
@@ -80,7 +80,14 @@ class InvoiceButton extends HTMLElement {
                 this.shadowRoot.querySelector("button").disabled = true;
                 this.shadowRoot.querySelector("button").innerText =
                     "Unavailable";
+                this.shadowRoot.querySelector("button").style.cursor = "auto";
             }
+        }
+
+        if (!this.hasInvoice) {
+            this.shadowRoot.querySelector("button").disabled = true;
+            this.shadowRoot.querySelector("button").innerText = "Unavailable";
+            this.shadowRoot.querySelector("button").style.cursor = "auto";
         }
 
         if (name == "invoiceid") {
@@ -91,17 +98,7 @@ class InvoiceButton extends HTMLElement {
                     const cacheEntry = await window.lendica?.invoices.getById(
                         invoiceId
                     );
-                    if (cacheEntry instanceof Promise) {
-                        this.setAttribute(
-                            "invoice",
-                            await JSON.stringify(cacheEntry)
-                        );
-                    } else {
-                        this.setAttribute(
-                            "invoice",
-                            JSON.stringify(cacheEntry)
-                        );
-                    }
+                    this.setAttribute("invoice", JSON.stringify(cacheEntry));
 
                     return window.lendica.invoices.onChange(() => {
                         this.setAttribute(
@@ -120,6 +117,10 @@ class InvoiceButton extends HTMLElement {
         if (name == "callback") {
             this.shadowRoot.querySelector("button").onclick = this._callback;
         }
+    }
+
+    get hasInvoice() {
+        return this.hasAttribute("invoice");
     }
 
     get invoice() {
@@ -159,6 +160,7 @@ class InvoiceButton extends HTMLElement {
     setContent(innerText, className) {
         this.shadowRoot.querySelector("button").innerText = innerText;
         this.shadowRoot.querySelector("button").classList.add(className);
+        this.shadowRoot.querySelector("button").style.cursor = "pointer";
     }
 
     display(status) {
